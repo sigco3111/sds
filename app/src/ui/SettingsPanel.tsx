@@ -14,17 +14,17 @@ import {
 } from '@app/camera/followFraming';
 
 const AUDIO_LABELS: Readonly<Record<AudioBusPreference, string>> = {
-  ambient: 'Meadow', flock: 'Sheep', dog: 'Dog', world: 'Field', ui: 'Interface',
+  ambient: '초원', flock: '양', dog: '개', world: '들판', ui: '인터페이스',
 };
 
 const BINDING_LABELS: Readonly<Record<InputAction, string>> = {
-  forward: 'Move forward', backward: 'Move back', left: 'Move left',
-  right: 'Move right', sprint: 'Sprint', walk: 'Hold to walk', bark: 'Bark', camera: 'Camera',
-  timer: 'Run timer',
+  forward: '앞으로 이동', backward: '뒤로 이동', left: '왼쪽으로 이동',
+  right: '오른쪽으로 이동', sprint: '전력질주', walk: '누르는 동안 걷기', bark: '짖기', camera: '카메라',
+  timer: '플레이 타이머',
 };
 
 const TURNING_LABELS: Readonly<Record<FollowTurning, string>> = {
-  off: 'Off', gentle: 'Gentle', quick: 'Quick',
+  off: '끔', gentle: '부드럽게', quick: '빠르게',
 };
 
 /**
@@ -54,9 +54,9 @@ const TURNING_LABELS: Readonly<Record<FollowTurning, string>> = {
  * a profile whose rate moves moves this line with it.
  */
 const TURNING_NOTES: Readonly<Record<FollowTurning, string>> = {
-  off: 'The camera follows the dog without turning.',
-  gentle: 'The camera follows the dog, turning at up to 25 degrees a second.',
-  quick: 'The camera follows the dog, turning at up to 40 degrees a second.',
+  off: '카메라가 회전 없이 개를 따라갑니다.',
+  gentle: '카메라가 초당 최대 25도로 회전하며 개를 따라갑니다.',
+  quick: '카메라가 초당 최대 40도로 회전하며 개를 따라갑니다.',
 };
 
 const KEY_OPTIONS: readonly { readonly code: string; readonly label: string }[] = [
@@ -65,7 +65,7 @@ const KEY_OPTIONS: readonly { readonly code: string; readonly label: string }[] 
   { code: 'KeyQ', label: 'Q' }, { code: 'KeyE', label: 'E' },
   { code: 'KeyC', label: 'C' }, { code: 'KeyF', label: 'F' },
   { code: 'KeyV', label: 'V' }, { code: 'KeyT', label: 'T' },
-  { code: 'Space', label: 'Space' }, { code: 'ShiftLeft', label: 'Left Shift' },
+  { code: 'Space', label: '스페이스' }, { code: 'ShiftLeft', label: '왼쪽 Shift' },
 ];
 
 function Toggle({
@@ -104,38 +104,38 @@ export function SettingsPanel() {
     <div className="herd-modal" role="dialog" aria-modal="true" aria-labelledby="settings-title">
       <section className="herd-panel">
         <header className="herd-panel__header">
-          <h2 id="settings-title" className="herd-panel__title">Settings</h2>
+          <h2 id="settings-title" className="herd-panel__title">설정</h2>
           <button
             type="button"
             className="herd-icon-button"
-            aria-label="Close settings"
+            aria-label="설정 닫기"
             onClick={state.closeSettings}
           >
-            Close
+            닫기
           </button>
         </header>
         <div className="herd-settings-list">
           <label className="herd-setting">
-            <span className="herd-setting__label">Render quality</span>
+            <span className="herd-setting__label">렌더 품질</span>
             <select
               className="herd-select"
               value={state.quality}
               onChange={(event) => state.setQuality(event.target.value as QualityPreference)}
             >
-              <option value="auto">Auto</option>
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
+              <option value="auto">자동</option>
+              <option value="high">높음</option>
+              <option value="medium">중간</option>
+              <option value="low">낮음</option>
             </select>
           </label>
           <div className="herd-setting">
-            <Toggle label="Reduce motion" checked={state.reduceMotion} onChange={state.setReduceMotion} />
+            <Toggle label="움직임 줄이기" checked={state.reduceMotion} onChange={state.setReduceMotion} />
             {/* Until the player sets it, the value is the system's, and the row
                 says so rather than presenting an inherited state as a choice. */}
             <span className="herd-setting__label">
               {state.reduceMotionChosen
-                ? 'Steadier camera, softer effects.'
-                : 'Steadier camera, softer effects. Following your system setting.'}
+                ? '카메라가 더 차분해지고 효과가 부드러워집니다.'
+                : '카메라가 더 차분해지고 효과가 부드러워집니다. 시스템 설정을 따르는 중입니다.'}
             </span>
           </div>
           {/* One .herd-setting for the row, as the Sound and Keyboard rows
@@ -145,10 +145,10 @@ export function SettingsPanel() {
               which is how the Studio's selects are labelled, and which keeps
               the status line underneath out of its accessible name. */}
           <div className="herd-setting">
-            <span className="herd-setting__label">Follow camera turning</span>
+            <span className="herd-setting__label">추적 카메라 회전</span>
             <select
               className="herd-select"
-              aria-label="Follow camera turning"
+              aria-label="추적 카메라 회전"
               value={state.followTurning}
               onChange={(event) => state.setFollowTurning(event.target.value as FollowTurning)}
             >
@@ -164,15 +164,15 @@ export function SettingsPanel() {
                 accessibility option away would cost the most. */}
             <span className="herd-setting__label">
               {state.reduceMotion && turning !== state.followTurning
-                ? `Reduce motion is limiting this to ${TURNING_LABELS[turning]}.`
+                ? `움직임 줄이기가 '${TURNING_LABELS[turning]}'(으)로 제한하고 있습니다.`
                 : TURNING_NOTES[turning]}
             </span>
           </div>
-          <Toggle label="Blue dog marker" checked={state.colorblindMarker} onChange={state.setColorblindMarker} />
-          <Toggle label="Show run timer" checked={state.showTimer} onChange={state.setShowTimer} />
+          <Toggle label="파란색 개 표시" checked={state.colorblindMarker} onChange={state.setColorblindMarker} />
+          <Toggle label="플레이 타이머 표시" checked={state.showTimer} onChange={state.setShowTimer} />
           <div className="herd-setting">
-            <span className="herd-setting__label">Sound</span>
-            <Toggle label="Mute all sound" checked={state.muted} onChange={state.setMuted} />
+            <span className="herd-setting__label">소리</span>
+            <Toggle label="모든 소리 끄기" checked={state.muted} onChange={state.setMuted} />
             <div className="herd-audio-levels">
               {(Object.keys(AUDIO_LABELS) as AudioBusPreference[]).map((bus) => (
                 <label key={bus} className="herd-audio-level">
@@ -183,7 +183,7 @@ export function SettingsPanel() {
                     max="1"
                     step="0.05"
                     value={state.audioLevels[bus]}
-                    aria-label={`${AUDIO_LABELS[bus]} volume`}
+                    aria-label={`${AUDIO_LABELS[bus]} 음량`}
                     onChange={(event) => state.setAudioLevel(bus, Number(event.target.value))}
                   />
                 </label>
@@ -191,7 +191,7 @@ export function SettingsPanel() {
             </div>
           </div>
           <div className="herd-setting">
-            <span className="herd-setting__label">Keyboard</span>
+            <span className="herd-setting__label">키보드</span>
             <div className="herd-bindings">
               {actions.map((action) => (
                 <label key={action} className="herd-binding">
@@ -210,13 +210,13 @@ export function SettingsPanel() {
             </div>
           </div>
           <footer className="herd-legal">
-            <span>Sheepdog Sim is free software under AGPL-3.0-or-later.</span>
+            <span>Sheepdog Sim은 AGPL-3.0-or-later 자유 소프트웨어입니다.</span>
             <span>
               <a href="https://github.com/matthew-kissinger/sds" target="_blank" rel="noreferrer">
-                Source code
+                소스 코드
               </a>
               {' · '}
-              <a href="/privacy">Privacy</a>
+              <a href={`${import.meta.env.BASE_URL}privacy`}>개인정보 처리방침</a>
             </span>
           </footer>
         </div>
