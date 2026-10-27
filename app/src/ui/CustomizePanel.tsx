@@ -17,12 +17,12 @@ import { getSheepName } from '@app/game/sheepNames';
 import { SheepRegistryTab } from './SheepRegistryTab';
 
 const DOG_ANGLES = [
-  { id: 'hero', label: '3/4 Hero' },
-  { id: 'face', label: 'Face' },
-  { id: 'profile', label: 'Profile' },
-  { id: 'front', label: 'Front' },
-  { id: 'rear', label: 'Rear' },
-  { id: 'top', label: 'Top' },
+  { id: 'hero', label: '3/4 측면' },
+  { id: 'face', label: '얼굴' },
+  { id: 'profile', label: '옆모습' },
+  { id: 'front', label: '정면' },
+  { id: 'rear', label: '뒷모습' },
+  { id: 'top', label: '위에서' },
 ] as const;
 
 export function CustomizePanel() {
@@ -48,7 +48,7 @@ export function CustomizePanel() {
   const studioRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
-    studioRef.current?.querySelector<HTMLElement>('[aria-label="Close customization studio"]')?.focus();
+    studioRef.current?.querySelector<HTMLElement>('[aria-label="커스터마이즈 스튜디오 닫기"]')?.focus();
     return () => { window.requestAnimationFrame(() => {
       const target = previous?.isConnected && previous !== document.body
         ? previous : document.getElementById('customize-trigger');
@@ -125,7 +125,7 @@ export function CustomizePanel() {
       {/* 3D Viewport Interaction & Orbit Controls */}
       <div
         className={`herd-customize-drag-zone ${isDragging ? 'herd-customize-drag-zone--active' : ''}`}
-        aria-label="Drag to orbit 3D camera preview"
+        aria-label="드래그하여 3D 미리보기 카메라 회전"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
@@ -133,24 +133,24 @@ export function CustomizePanel() {
       />
 
       {/* Floating 3D Preview Status and Controls */}
-      <div className="herd-customize-hud" role="toolbar" aria-label="3D Preview Controls">
+      <div className="herd-customize-hud" role="toolbar" aria-label="3D 미리보기 컨트롤">
         <div className="herd-customize-pill">
           <span>
             {activeTab === 'dog'
               ? dogName
               : activeTab === 'flock'
-              ? 'Flock preview'
+              ? '양 떼 미리보기'
               : `#${selectedSheep + 1}: ${currentName}`}
           </span>
         </div>
 
         {activeTab === 'dog' ? (
           <>
-          <select className="herd-angle-select" aria-label="Camera angle" value={dogAngle}
+          <select className="herd-angle-select" aria-label="카메라 각도" value={dogAngle}
             onChange={(e) => setDogAngle(e.target.value as typeof dogAngle)}>
             {DOG_ANGLES.map(angle => <option key={angle.id} value={angle.id}>{angle.label}</option>)}
           </select>
-          <div className="herd-angle-controls" role="group" aria-label="Camera angles">
+          <div className="herd-angle-controls" role="group" aria-label="카메라 각도">
             {DOG_ANGLES.map((angle) => (
               <button
                 key={angle.id}
@@ -167,14 +167,14 @@ export function CustomizePanel() {
 
         {activeTab === 'sheep' ? (
           <div className="herd-orbit-controls">
-            <button type="button" className="herd-orbit-btn" title="Previous Sheep" aria-label="Previous Sheep" onClick={handlePrevSheep}>‹</button>
-            <button type="button" className="herd-orbit-btn" title="Next Sheep" aria-label="Next Sheep" onClick={handleNextSheep}>›</button>
+            <button type="button" className="herd-orbit-btn" title="이전 양" aria-label="이전 양" onClick={handlePrevSheep}>‹</button>
+            <button type="button" className="herd-orbit-btn" title="다음 양" aria-label="다음 양" onClick={handleNextSheep}>›</button>
           </div>
         ) : null}
 
         <div className="herd-orbit-controls">
-          <button type="button" className="herd-orbit-btn" title="Orbit Camera Left" aria-label="Orbit Camera Left" onClick={() => setOrbitAngle((prev) => prev + Math.PI / 6)}>⟲</button>
-          <button type="button" className="herd-orbit-btn" title="Orbit Camera Right" aria-label="Orbit Camera Right" onClick={() => setOrbitAngle((prev) => prev - Math.PI / 6)}>⟳</button>
+          <button type="button" className="herd-orbit-btn" title="카메라 왼쪽 회전" aria-label="카메라 왼쪽 회전" onClick={() => setOrbitAngle((prev) => prev + Math.PI / 6)}>⟲</button>
+          <button type="button" className="herd-orbit-btn" title="카메라 오른쪽 회전" aria-label="카메라 오른쪽 회전" onClick={() => setOrbitAngle((prev) => prev - Math.PI / 6)}>⟳</button>
         </div>
       </div>
 
@@ -183,19 +183,19 @@ export function CustomizePanel() {
         className="herd-customize-dock"
       >
         <header className="herd-panel__header">
-          <h2 id="customize-title" className="herd-panel__title">Studio</h2>
-          <button type="button" className="herd-icon-button" aria-label="Close customization studio" onClick={closeCustomize}>Close</button>
+          <h2 id="customize-title" className="herd-panel__title">스튜디오</h2>
+          <button type="button" className="herd-icon-button" aria-label="커스터마이즈 스튜디오 닫기" onClick={closeCustomize}>닫기</button>
         </header>
 
-        <div className="herd-tabs" role="tablist" aria-label="Customization categories">
+        <div className="herd-tabs" role="tablist" aria-label="커스터마이즈 항목">
           <button type="button" role="tab" aria-selected={activeTab === 'dog'} className={`herd-tab ${activeTab === 'dog' ? 'herd-tab--active' : ''}`} onClick={() => setActiveTab('dog')}>
-            Sheepdog
+            양몰이 개
           </button>
           <button type="button" role="tab" aria-selected={activeTab === 'flock'} className={`herd-tab ${activeTab === 'flock' ? 'herd-tab--active' : ''}`} onClick={() => setActiveTab('flock')}>
-            Flock Breeds
+            양 품종
           </button>
           <button type="button" role="tab" aria-selected={activeTab === 'sheep'} className={`herd-tab ${activeTab === 'sheep' ? 'herd-tab--active' : ''}`} onClick={() => setActiveTab('sheep')}>
-            Sheep Registry
+            양 명부
           </button>
         </div>
 
@@ -203,7 +203,7 @@ export function CustomizePanel() {
         {activeTab === 'dog' ? (
           <div className="herd-tab-content">
             <p className="herd-customize-desc">
-              Name your working collie and select coat markings and coloration. Changes preview live in 3D.
+              양몰이 콜리의 이름을 짓고 털 무늬와 색을 고르세요. 변경 사항은 3D로 바로 미리 볼 수 있습니다.
             </p>
 
             <div className="herd-rename-row" style={{ marginBottom: 14 }}>
@@ -212,21 +212,21 @@ export function CustomizePanel() {
                 className="herd-rename-input"
                 maxLength={24}
                 value={dogName}
-                placeholder="Name your dog..."
-                aria-label="Working sheepdog name"
+                placeholder="개 이름을 지어주세요..."
+                aria-label="양몰이 개 이름"
                 onChange={(e) => setDogName(e.target.value)}
               />
               <button
                 type="button"
                 className="herd-action-btn"
                 onClick={() => setDogName(getRandomDogName())}
-                title="Roll traditional working collie name"
+                title="전통 양몰이 콜리 이름 뽑기"
               >
-                Roll
+                뽑기
               </button>
             </div>
 
-            <div className="herd-preset-list" role="radiogroup" aria-label="Working collie coats">
+            <div className="herd-preset-list" role="radiogroup" aria-label="양몰이 콜리 털색">
               {Object.values(DOG_COAT_PRESETS).map((preset) => {
                 const isSelected = dogCoatPreset === preset.id;
                 return (
@@ -257,9 +257,9 @@ export function CustomizePanel() {
         {activeTab === 'flock' ? (
           <div className="herd-tab-content">
             <p className="herd-customize-desc">
-              Choose the natural breed makeup of your flock. Breeds feature distinct wool and face markings.
+              양 떼를 이룰 품종 조합을 고르세요. 품종마다 양털과 얼굴 무늬가 다릅니다.
             </p>
-            <div className="herd-preset-list" role="radiogroup" aria-label="Flock breed varieties">
+            <div className="herd-preset-list" role="radiogroup" aria-label="양 떼 품종 조합">
               {FLOCK_VARIETY_OPTIONS.map((option) => {
                 const isSelected = flockVarietyMode === option.id;
                 return (
