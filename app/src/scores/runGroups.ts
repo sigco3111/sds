@@ -82,8 +82,5 @@ export function formatDelta(seconds: number): string {
 
 /** "12th", "21st", "113th". */
 export function formatOrdinal(value: number): string {
-  const tens = value % 100;
-  if (tens >= 11 && tens <= 13) return `${value}th`;
-  const suffix = ['th', 'st', 'nd', 'rd'][value % 10] ?? 'th';
-  return `${value}${suffix}`;
+  return `${value}위`;
 }
