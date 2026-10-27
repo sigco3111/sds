@@ -71,7 +71,7 @@ export function createScoresController(
       useScoreStore.getState().patch({
         identityStatus: 'offline',
         identity: storage.load(),
-        identityMessage: 'Online times are unavailable. Play still works.',
+        identityMessage: '온라인 기록을 사용할 수 없습니다. 플레이는 가능합니다.',
       });
       return null;
     }).finally(() => {
@@ -103,7 +103,7 @@ export function createScoresController(
     useScoreStore.getState().patch({
       submissionStatus: 'submitting',
       submittedFlockSize: run.flockSize,
-      entries: [], rank: null, submissionMessage: 'Checking the online times.',
+      entries: [], rank: null, submissionMessage: '온라인 기록을 확인하는 중입니다.',
       sharePath: null, shareTitle: '', shareText: '',
       resultBoardRank: null, resultBoardPlayers: null,
       resultWeekRank: null, resultWeekPlayers: null,
@@ -144,13 +144,13 @@ export function createScoresController(
       useScoreStore.getState().patch({
         submissionStatus: 'ready', entries: page.entries, rank: ownEntry?.rank ?? null,
         submissionMessage: ownEntry === undefined
-          ? 'Your time is recorded outside the first 100 places.'
+          ? '기록이 100위 밖에 저장되었습니다.'
           : `Online rank ${ownEntry.rank}.`,
       });
     } catch {
       useScoreStore.getState().patch({
         submissionStatus: 'offline', entries: [], rank: null,
-        submissionMessage: 'Your local time is safe. The online board is unavailable.',
+        submissionMessage: '로컬 기록은 안전합니다. 온라인 순위표를 사용할 수 없습니다.',
       });
     }
   };
@@ -183,7 +183,7 @@ export function createScoresController(
     async rename(displayName) {
       const requested = displayName.trim();
       if (requested.length === 0) {
-        useScoreStore.getState().patch({ renameMessage: 'Enter a name.' });
+        useScoreStore.getState().patch({ renameMessage: '이름을 입력하세요.' });
         return false;
       }
       useScoreStore.getState().patch({ renaming: true, renameMessage: '' });
@@ -199,8 +199,8 @@ export function createScoresController(
         return true;
       } catch (error) {
         const message = error instanceof ScoreApiError && error.status === 400
-          ? 'Use a name from 1 to 20 characters.'
-          : 'Name change is unavailable. Play still works.';
+          ? '1~20자 이름을 사용하세요.'
+          : '이름 변경을 사용할 수 없습니다. 플레이는 가능합니다.';
         useScoreStore.getState().patch({ renaming: false, renameMessage: message });
         return false;
       }
@@ -221,9 +221,9 @@ export function createScoresController(
         if (request !== boardRequest) return;
         const empty = page.entries.length === 0
           ? (week === undefined
-            ? 'No times yet. Yours could be first.'
+            ? '아직 기록이 없습니다. 첫 기록의 주인공이 되어 보세요.'
             : week === 'current'
-              ? 'No times yet this week.'
+              ? '이번 주 기록이 아직 없습니다.'
               : `No times in the ${page.weekLabel ?? 'week'}.`)
           : '';
         useScoreStore.getState().patch({
@@ -242,7 +242,7 @@ export function createScoresController(
           boardEntries: [],
           boardWeek: null,
           boardWeekLabel: '',
-          boardMessage: 'Online times are unavailable. Play still works.',
+          boardMessage: '온라인 기록을 사용할 수 없습니다. 플레이는 가능합니다.',
         });
       }
     },
@@ -250,7 +250,7 @@ export function createScoresController(
     async loadMyRuns() {
       const request = ++runsRequest;
       useScoreStore.getState().patch({
-        runsStatus: 'loading', runs: [], runsMessage: 'Loading your times.',
+        runsStatus: 'loading', runs: [], runsMessage: '기록을 불러오는 중입니다.',
       });
       try {
         // Needs an identity before it can ask for one player's own history,
@@ -263,14 +263,14 @@ export function createScoresController(
         useScoreStore.getState().patch({
           runsStatus: 'ready',
           runs,
-          runsMessage: runs.length === 0 ? 'No finished runs yet.' : '',
+          runsMessage: runs.length === 0 ? '완주 기록이 아직 없습니다.' : '',
         });
       } catch {
         if (request !== runsRequest) return;
         useScoreStore.getState().patch({
           runsStatus: 'offline',
           runs: [],
-          runsMessage: 'Your times are unavailable. Play still works.',
+          runsMessage: '기록을 불러올 수 없습니다. 플레이는 가능합니다.',
         });
       }
     },
