@@ -1,56 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Privacy information for Sheepdog Sim." />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="description" content="Sheepdog Sim 한국어판 개인정보 안내: 계정 없이 플레이, 기기 로컬 저장소만 사용." />
+    <meta name="robots" content="index, follow" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Sheepdog Sim" />
-    <meta property="og:title" content="Sheepdog Sim privacy" />
-    <meta property="og:description" content="What the game stores locally, what solo leaderboards send and how aggregate site analytics work." />
-    <meta property="og:url" content="https://sheepdogsim.com/privacy" />
-    <meta property="og:image" content="https://sheepdogsim.com/og/sheepdog-sim-v2.png" />
-    <meta property="og:image:secure_url" content="https://sheepdogsim.com/og/sheepdog-sim-v2.png" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="A sheepdog splits a large reactive flock with a farmhouse, red barn, clouds and sun behind it." />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sheepdog Sim privacy" />
-    <meta name="twitter:description" content="What the game stores locally, what solo leaderboards send and how aggregate site analytics work." />
-    <meta name="twitter:image" content="https://sheepdogsim.com/og/sheepdog-sim-v2.png" />
-    <meta name="twitter:image:alt" content="A sheepdog splits a large reactive flock with a farmhouse, red barn, clouds and sun behind it." />
-    <link rel="canonical" href="https://sheepdogsim.com/privacy" />
-    <link rel="stylesheet" href="/site.css" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <title>Sheepdog Sim Privacy</title>
-    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "85f350cc7ba84d01b9373b041252fef9"}'></script><!-- End Cloudflare Web Analytics -->
+    <meta property="og:title" content="Sheepdog Sim 개인정보 안내" />
+    <link rel="canonical" href="https://sigco3111.github.io/sds/privacy" />
+    <link rel="stylesheet" href="./site.css" />
+    <link rel="manifest" href="./site.webmanifest" />
+    <link rel="icon" href="./favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="icon" type="image/png" sizes="48x48" href="./favicon-48.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="./favicon-96.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <title>Sheepdog Sim 개인정보 안내</title>
   </head>
   <body>
     <main>
-      <p class="kicker">Privacy</p>
-      <h1>Play works without an account</h1>
-      <p class="lede">Sheepdog Sim has optional online solo times. The field, completion and local personal bests keep working when the score service is unavailable.</p>
-      <h2>Local data</h2>
-      <p>The game stores preferences, control bindings, personal best times and a server-issued score identity in browser local storage. The identity contains a random identifier, a device secret and the current running name. Clearing site data removes the browser copy but does not delete times already submitted to the public board.</p>
-      <h2>Online solo times</h2>
-      <p>The score service receives the server-issued identity, running name, completion time, flock size and current field partition. A friendly random name is assigned automatically and can be replaced with a name you choose. Names and leading completion times are public. Solo score requests do not contain multiplayer results or contact information.</p>
-      <h2>Multiplayer history</h2>
-      <p>Online matches use a separate authoritative service. It receives movement and bark inputs to run the match. Persistent match history stores the participating random player identifiers and running names, mode, region, flock size, starting party, dates, outcomes and connection-loss/reconnect counts. It does not retain a movement replay, admission tickets, device secrets or IP addresses in the match database.</p>
-      <p>Your match history is available through your existing player identity. Participants can see their shared match results; private rooms do not appear on public lobby boards. The owner can review match activity, reliability and daily capacity-rejection totals through a protected dashboard. These records remain after a room closes and are separate from public solo times. There is no public multiplayer ranking.</p>
-      <h2>Hosting</h2>
-      <p>The static site and score service use Cloudflare. Cloudflare and the network providers involved may process standard request information such as IP address, user agent, requested path and timing for security and delivery operations.</p>
-      <h2>Aggregate site analytics</h2>
-      <p>The public site may use Cloudflare Web Analytics to count page visits and measure page-load performance. Cloudflare states that this service does not collect or use visitors' personal data. The site analytics beacon does not receive multiplayer results or control inputs. Multiplayer match records are stored separately as described above.</p>
-      <h2>Source and questions</h2>
-      <p>The client source is public, including the storage and network boundaries. Questions can be raised in the <a href="https://github.com/matthew-kissinger/sds">source repository</a>.</p>
-      <nav><a href="/">Play</a><a href="/about">About</a><a href="/support">Support</a></nav>
+      <p class="kicker">개인정보</p>
+      <h1>계정 없이 플레이할 수 있습니다</h1>
+      <p class="lede">이 한국어판 Sheepdog Sim은 솔로 플레이 전용입니다. 온라인 기록과 멀티플레이 서버에 연결하지 않으며, 어떤 개인 정보도 서버로 보내지 않습니다.</p>
+      <h2>로컬 데이터</h2>
+      <p>게임은 환경 설정, 조작 배정, 개인 최고 기록, 개와 양의 이름을 브라우저 로컬 저장소에 저장합니다. 사이트 데이터를 지우면 이 정보가 모두 삭제됩니다.</p>
+      <h2>호스팅</h2>
+      <p>이 한국어판은 GitHub Pages에서 제공됩니다. GitHub과 관련 네트워크 사업자는 보안과 전송을 위해 IP 주소, 사용자 에이전트, 요청 경로, 시각 같은 표준 요청 정보를 처리할 수 있습니다.</p>
+      <h2>소스와 문의</h2>
+      <p>클라이언트 소스는 공개되어 있습니다. 문의는 <a href="https://github.com/sigco3111/sds">소스 저장소</a>에 남겨 주세요.</p>
+      <nav><a href="./">플레이</a><a href="./about">소개</a><a href="./support">도움말</a></nav>
     </main>
   </body>
 </html>
