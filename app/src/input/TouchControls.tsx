@@ -238,7 +238,7 @@ export function TouchControls() {
         className="herd-sprint-button"
         data-active="false"
         data-testid="sprint-button"
-        aria-label="Hold to sprint"
+        aria-label="누르는 동안 전력질주"
         aria-pressed="false"
         onPointerDown={onSprintDown}
         onPointerUp={releaseSprintPointer}
@@ -261,29 +261,29 @@ export function TouchControls() {
           syncSprint();
         }}
       >
-        Sprint
+        전력질주
       </button>
       <button
         type="button"
         className="herd-bark-button"
         data-testid="bark-button"
-        aria-label="Bark"
+        aria-label="짖기"
         onPointerDown={barkPressed}
         // Pointer input fires immediately above; keyboard/assistive clicks
         // have no pointer-down event and must activate the same action once.
         onClick={(event) => { if (event.detail === 0) barkPressed(); }}
       >
-        Bark
+        짖기
       </button>
       <button
         type="button"
         className="herd-camera-button"
         data-testid="camera-button"
-        aria-label="Change camera"
+        aria-label="카메라 전환"
         onPointerDown={toggleCameraMode}
         onClick={(event) => { if (event.detail === 0) toggleCameraMode(); }}
       >
-        Camera
+        카메라
       </button>
     </>
   );
