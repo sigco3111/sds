@@ -18,7 +18,7 @@ export function formatCardClock(seconds: number): string {
 }
 
 export function cardShareTitle(clock: string, flockSize: number): string {
-  return `${clock} · ${flockSize} sheep`;
+  return `${clock} · 양 ${flockSize}마리`;
 }
 
 export function completionShareText(input: {
@@ -28,10 +28,10 @@ export function completionShareText(input: {
   readonly weekPlayers?: number;
   readonly newBest: boolean;
 }): string {
-  const lead = input.newBest ? 'New best. ' : '';
-  const time = `${input.clock} with ${input.flockSize} sheep.`;
+  const lead = input.newBest ? '새 최고 기록. ' : '';
+  const time = `양 ${input.flockSize}마리, ${input.clock}.`;
   if (input.weekRank === undefined || input.weekPlayers === undefined) return `${lead}${time}`;
-  return `${lead}${time} ${formatOrdinal(input.weekRank)} of ${input.weekPlayers} this week.`;
+  return `${lead}${time} 이번 주 ${input.weekPlayers}명 중 ${formatOrdinal(input.weekRank)}.`;
 }
 
 export function historyShareText(input: {
@@ -41,13 +41,13 @@ export function historyShareText(input: {
   readonly weekPlayers?: number;
   readonly weekLabel?: string;
 }): string {
-  const time = `${input.clock} with ${input.flockSize} sheep.`;
+  const time = `양 ${input.flockSize}마리, ${input.clock}.`;
   if (
     input.weekRank === undefined
     || input.weekPlayers === undefined
     || input.weekLabel === undefined
   ) return time;
-  return `${time} ${formatOrdinal(input.weekRank)} of ${input.weekPlayers} in the ${input.weekLabel}.`;
+  return `${time} ${input.weekLabel} ${input.weekPlayers}명 중 ${formatOrdinal(input.weekRank)}.`;
 }
 
 export type ShareOutcome = 'shared' | 'copied' | 'idle';
