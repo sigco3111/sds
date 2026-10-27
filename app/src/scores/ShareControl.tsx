@@ -24,7 +24,7 @@ export function ShareControl({
 }) {
   const [copied, setCopied] = useState(false);
   if (copied) {
-    return <span className={compact ? 'herd-run__share' : 'herd-share-copied'} data-copied="true">Link copied</span>;
+    return <span className={compact ? 'herd-run__share' : 'herd-share-copied'} data-copied="true">링크 복사됨</span>;
   }
   return (
     <button
@@ -48,7 +48,7 @@ export function ShareControl({
         });
       }}
     >
-      Share
+      공유
     </button>
   );
 }
