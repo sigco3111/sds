@@ -7,7 +7,7 @@
 import { FLOCK_SIZES, type FlockSize } from '@app/state/store';
 
 export function flockSizeFromPath(pathname: string): FlockSize | null {
-  const match = /^\/play\/(25|75|200)\/?$/.exec(pathname);
+  const match = /(?:^|\/)play\/(25|75|200)\/?$/.exec(pathname);
   if (!match) return null;
   const size = Number(match[1]);
   return FLOCK_SIZES.includes(size as FlockSize) ? size as FlockSize : null;
