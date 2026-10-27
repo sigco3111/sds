@@ -25,7 +25,7 @@ export function PlayerIdentity() {
     return (
       <form className="herd-identity-editor" onSubmit={(event) => { event.preventDefault(); void save(); }}>
         <label>
-          <span className="herd-visually-hidden">Leaderboard name</span>
+          <span className="herd-visually-hidden">순위표 이름</span>
           <input
             className="herd-name-input"
             value={name}
@@ -34,8 +34,8 @@ export function PlayerIdentity() {
             onChange={(event) => setName(event.target.value)}
           />
         </label>
-        <button type="submit" className="herd-text-button" disabled={renaming}>Save</button>
-        <button type="button" className="herd-text-button" onClick={() => setEditing(false)}>Cancel</button>
+        <button type="submit" className="herd-text-button" disabled={renaming}>저장</button>
+        <button type="button" className="herd-text-button" onClick={() => setEditing(false)}>취소</button>
         {message ? <span className="herd-identity-message" role="status">{message}</span> : null}
       </form>
     );
@@ -45,11 +45,11 @@ export function PlayerIdentity() {
     <div className="herd-identity" aria-live="polite">
       {identity ? (
         <>
-          <span>Running as <strong>{identity.displayName}</strong></span>
-          <button type="button" className="herd-text-button" onClick={() => setEditing(true)}>Edit</button>
+          <span><strong>{identity.displayName}</strong>(으)로 플레이 중</span>
+          <button type="button" className="herd-text-button" onClick={() => setEditing(true)}>변경</button>
         </>
       ) : (
-        <span>{status === 'connecting' ? 'Choosing a running name' : 'Online times unavailable'}</span>
+        <span>{status === 'connecting' ? '이름 정하는 중' : '온라인 기록 사용 불가'}</span>
       )}
     </div>
   );
