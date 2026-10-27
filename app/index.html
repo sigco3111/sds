@@ -1,62 +1,60 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
-    <title>Sheepdog Sim - Free Sheep Herding Browser Game</title>
-    <meta name="description" content="Play Sheepdog Sim, a free browser herding game. Guide 25, 75 or 200 sheep through one field with keyboard, gamepad or touch controls." />
+    <title>Sheepdog Sim - 무료 양몰이 브라우저 게임</title>
+    <meta name="description" content="무료 브라우저 양몰이 게임 Sheepdog Sim을 플레이하세요. 키보드, 게임패드, 터치 조작으로 25, 75, 200마리의 양을 들판에서 울타리 안으로 몰아 넣으세요." />
     <meta name="author" content="Matthew Kissinger" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content="#405b3e" />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content="ko_KR" />
     <meta property="og:site_name" content="Sheepdog Sim" />
-    <meta property="og:title" content="Sheepdog Sim | Open-source browser herding game" />
-    <meta property="og:description" content="Play an open-source sheep-herding game with 25, 75 or 200 reactive sheep. Split, gather and guide the flock with keyboard, gamepad or touch controls." />
-    <meta property="og:url" content="https://sheepdogsim.com/" />
-    <meta property="og:image" content="https://raw.githubusercontent.com/matthew-kissinger/sds/main/app/public/og/sheepdog-sim-v2.png" />
-    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/matthew-kissinger/sds/main/app/public/og/sheepdog-sim-v2.png" />
+    <meta property="og:title" content="Sheepdog Sim | 오픈소스 브라우저 양몰이 게임" />
+    <meta property="og:description" content="25, 75, 200마리의 양이 반응하는 오픈소스 양몰이 게임. 키보드, 게임패드, 터치로 양 떼를 가르고 모아 울타리 안으로 몰아 넣으세요." />
+    <meta property="og:url" content="https://sigco3111.github.io/sds/" />
+    <meta property="og:image" content="https://raw.githubusercontent.com/sigco3111/sds/main/app/public/og/sheepdog-sim-v2.png" />
+    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/sigco3111/sds/main/app/public/og/sheepdog-sim-v2.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="A sheepdog splits a large reactive flock with a farmhouse, red barn, clouds and sun behind it." />
+    <meta property="og:image:alt" content="양몰이 개가 농가와 붉은 헛간, 구름과 해를 배경으로 커다란 양 떼를 가르는 모습." />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Sheepdog Sim | Open-source browser herding game" />
-    <meta name="twitter:description" content="Play an open-source sheep-herding game with 25, 75 or 200 reactive sheep. Split, gather and guide the flock with keyboard, gamepad or touch controls." />
-    <meta name="twitter:image" content="https://raw.githubusercontent.com/matthew-kissinger/sds/main/app/public/og/sheepdog-sim-v2.png" />
-    <meta name="twitter:image:alt" content="A sheepdog splits a large reactive flock with a farmhouse, red barn, clouds and sun behind it." />
-    <link rel="canonical" href="https://sheepdogsim.com/" />
+    <meta name="twitter:title" content="Sheepdog Sim | 오픈소스 브라우저 양몰이 게임" />
+    <meta name="twitter:description" content="25, 75, 200마리의 양이 반응하는 오픈소스 양몰이 게임. 키보드, 게임패드, 터치로 양 떼를 가르고 모아 울타리 안으로 몰아 넣으세요." />
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/sigco3111/sds/main/app/public/og/sheepdog-sim-v2.png" />
+    <meta name="twitter:image:alt" content="양몰이 개가 농가와 붉은 헛간, 구름과 해를 배경으로 커다란 양 떼를 가르는 모습." />
+    <link rel="canonical" href="https://sigco3111.github.io/sds/" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <!-- The interface face loads from here, not from UiStyles, because the
-         static shell below paints before any JavaScript runs and must not
-         disagree with the React shell that replaces it. crossorigin is
-         mandatory even same-origin: a font preload without it is fetched in a
-         different CORS mode from the @font-face request and downloads twice. -->
+    <!-- 인터페이스 서체는 UiStyles가 아니라 여기서 로드한다. 아래 정적 셸이
+         JavaScript보다 먼저 그려지므로 React 셸과 서체가 달라서는 안 된다.
+         crossorigin은 same-origin이라도 필수다. -->
     <link rel="preload" href="/fonts/piazzolla-ui.woff2" as="font" type="font/woff2" crossorigin
+          media="not all and (prefers-reduced-data: reduce)" />
+    <link rel="preload" href="/fonts/noto-serif-kr.woff2" as="font" type="font/woff2" crossorigin
           media="not all and (prefers-reduced-data: reduce)" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": ["VideoGame", "WebApplication"],
         "name": "Sheepdog Sim",
-        "@id": "https://sheepdogsim.com/#game",
-        "url": "https://sheepdogsim.com/",
-        "image": "https://sheepdogsim.com/og/sheepdog-sim-v2.png",
-        "description": "Play a free browser herding game and guide 25, 75 or 200 sheep through one field.",
+        "@id": "https://sigco3111.github.io/sds/#game",
+        "url": "https://sigco3111.github.io/sds/",
+        "image": "https://sigco3111.github.io/sds/og/sheepdog-sim-v2.png",
+        "description": "무료 브라우저 양몰이 게임에서 25, 75, 200마리의 양을 들판에서 울타리 안으로 몰아 넣으세요.",
         "applicationCategory": "GameApplication",
         "operatingSystem": "Web browser",
         "browserRequirements": "Requires JavaScript and WebGL2 or WebGPU",
         "playMode": [
-          "https://schema.org/SinglePlayer",
-          "https://schema.org/CoOp",
-          "https://schema.org/MultiPlayer"
+          "https://schema.org/SinglePlayer"
         ],
-        "inLanguage": "en",
+        "inLanguage": "ko",
         "genre": ["Simulation", "Herding"],
         "gamePlatform": ["Web browser", "Desktop", "Mobile"],
         "isAccessibleForFree": true,
@@ -70,16 +68,11 @@
           "name": "Matthew Kissinger",
           "url": "https://github.com/matthew-kissinger"
         },
-        "sameAs": "https://github.com/matthew-kissinger/sds",
+        "sameAs": "https://github.com/sigco3111/sds",
         "license": "https://www.gnu.org/licenses/agpl-3.0.html"
       }
     </script>
     <style>
-      /* One declaration site for the interface face. It lives here rather than
-         in UiStyles because UiStyles only exists once the bundle has parsed,
-         and the static shell below paints before that. A font is fetched only
-         when something asks to draw a glyph in it, so the reduced-data rule
-         further down suppresses the download by never naming the family. */
       @font-face {
         font-family: 'Piazzolla';
         src: url('/fonts/piazzolla-ui.woff2') format('woff2-variations'),
@@ -88,19 +81,16 @@
         font-style: normal;
         font-display: swap;
       }
-      /* Piazzolla carries a live optical-size axis, so its letters are wider
-         at 10px than at 48px - about seven percent across the shipped range.
-         A fallback can only be metric-matched to one point on that axis, so
-         the display face gets the matched fallback and running text keeps
-         plain Georgia. Matching display is the side that matters: the static
-         shell headline below is the only text that paints before the bundle
-         exists, and a three percent error on one 48px line is visible in a way
-         that the same error on an 11px label is not.
-
-         local('Georgia') deliberately fails on Android, where no Georgia is
-         installed; the stack then falls through to the unadjusted entry and
-         the system's own serif, which is right, because the adjustment was
-         measured against Georgia and means nothing without it. */
+      /* 한국어판 인터페이스 서체: Noto Serif KR (SIL OFL 1.1).
+         한글 글리프가 실제로 필요할 때만 내려받는다. */
+      @font-face {
+        font-family: 'Noto Serif KR';
+        src: url('/fonts/noto-serif-kr.woff2') format('woff2');
+        font-weight: 400 700;
+        font-style: normal;
+        font-display: swap;
+        unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7A3;
+      }
       @font-face {
         font-family: 'Piazzolla Display Fallback';
         src: local('Georgia');
@@ -110,44 +100,24 @@
         line-gap-override: 0%;
       }
       :root {
-        --herd-font: 'Piazzolla', Georgia, 'Times New Roman', serif;
-        --herd-display-font: 'Piazzolla', 'Piazzolla Display Fallback', Georgia, 'Times New Roman', serif;
-        /* Piazzolla sets a tight word space by design - 0.188 em at the small
-           end of the optical axis falling to 0.153 em at the display end,
-           against Georgia's 0.241 em and Times' 0.250 em. That suits running
-           prose and does not suit this interface, where most of the type is
-           two- and three-word labels sitting alone: "About the game" closed up
-           into one word at 13px. The correction is em-based, so it tracks the
-           size, and it is deliberately smaller than the full difference
-           because the optical axis is already opening the space at the sizes
-           where it is needed most. Fitting belongs in the stylesheet; the
-           alternative was editing the space glyph's advance in the bake, which
-           hides a typographic decision inside a binary and leaves us shipping
-           a Piazzolla nobody can reproduce from upstream. */
+        --herd-font: 'Piazzolla', 'Noto Serif KR', Georgia, 'Times New Roman', serif;
+        --herd-display-font: 'Piazzolla', 'Noto Serif KR', 'Piazzolla Display Fallback', Georgia, 'Times New Roman', serif;
         --herd-word-space: .065em;
       }
-      /* Pre-React first paint. UiStyles owns the same paper tone after mount. */
       html, body, #root { margin: 0; height: 100%; overflow: hidden; background: #eadfca; }
       canvas { display: block; touch-action: none; }
       .static-shell { box-sizing: border-box; width: 100%; height: 100%; display: grid; place-items: center; padding: 24px; color: #2c3828; font: 14px/1.5 system-ui, sans-serif; text-align: center; }
       .static-shell__card { width: min(88vw, 440px); box-sizing: border-box; padding: 32px; border: 1px solid rgba(78,65,46,.2); border-radius: 32px; background: rgba(244,234,215,.72); box-shadow: 0 18px 70px rgba(65,51,34,.12); }
       .static-shell h1 { margin: 0 0 10px; font: 400 48px/1 var(--herd-display-font); letter-spacing: .035em; word-spacing: var(--herd-word-space); }
-      /* A reader who has asked for less data keeps the system stack. Nothing
-         then names 'Piazzolla', so the browser never fetches it, and the
-         matching media on the preload above stops that request too. */
       @media (prefers-reduced-data: reduce) {
         :root {
-          --herd-font: Georgia, 'Times New Roman', serif;
-          /* No size-adjust here. Nothing is going to swap, so the reader would
-             simply be reading Georgia three percent small, for ever. */
-          --herd-display-font: Georgia, 'Times New Roman', serif;
-          /* And no word-space correction: it corrects Piazzolla's fit, and
-             Georgia's own space needs no help. */
+          --herd-font: 'Noto Serif KR', Georgia, 'Times New Roman', serif;
+          --herd-display-font: 'Noto Serif KR', Georgia, 'Times New Roman', serif;
           --herd-word-space: normal;
         }
       }
-      .static-shell p { margin: 0; color: #596052; letter-spacing: .12em; text-transform: uppercase; }
-      .static-shell .static-shell__description { margin: 16px 0; letter-spacing: normal; text-transform: none; }
+      .static-shell p { margin: 0; color: #596052; letter-spacing: .12em; }
+      .static-shell .static-shell__description { margin: 16px 0; letter-spacing: normal; }
       .static-shell nav { display: flex; justify-content: center; gap: 20px; }
       .static-shell a { color: #365f44; text-underline-offset: 3px; }
     </style>
@@ -155,20 +125,15 @@
   <body>
     <div id="root">
       <main class="static-shell">
-        <section class="static-shell__card" aria-label="Loading Sheepdog Sim">
+        <section class="static-shell__card" aria-label="Sheepdog Sim 불러오는 중">
           <h1>Sheepdog Sim</h1>
-          <p>Loading game code</p>
-          <p class="static-shell__description">A free sheep herding game in your browser. Move, sprint and bark as a sheepdog to guide 25, 75 or 200 sheep into the pen.</p>
-          <noscript><p class="static-shell__description">Enable JavaScript to play. The game information and controls below are available without it.</p></noscript>
-          <nav aria-label="Game information"><a href="/about">About the game</a><a href="/support">How to play</a></nav>
+          <p>게임 코드 불러오는 중</p>
+          <p class="static-shell__description">브라우저에서 즐기는 무료 양몰이 게임. 양몰이 개가 되어 이동, 전력질주, 짖기로 25, 75, 200마리의 양을 울타리 안으로 몰아 넣으세요.</p>
+          <noscript><p class="static-shell__description">플레이하려면 JavaScript를 켜 주세요. 아래 게임 정보와 조작법은 JavaScript 없이 볼 수 있습니다.</p></noscript>
+          <nav aria-label="게임 정보"><a href="/about">게임 소개</a><a href="/support">플레이 방법</a></nav>
         </section>
       </main>
     </div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- Cloudflare Web Analytics, site sheepdogsim.com. This is the only copy
-         of the token. Cloudflare skips its zone-level automatic injection when
-         a page already carries a beacon, and scripts/verify-public-discovery.mjs
-         requires exactly one with this token. Cloudflare's snippet, unchanged. -->
-    <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "85f350cc7ba84d01b9373b041252fef9"}'></script><!-- End Cloudflare Web Analytics -->
   </body>
 </html>
