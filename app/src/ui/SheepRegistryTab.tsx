@@ -170,10 +170,10 @@ export function SheepRegistryTab() {
           onNextSheep={handleNextSheep}
         />
 
-        <div className="herd-flock-scope" role="group" aria-label="Flock size selection">
-          <span className="herd-scope-label">Flock size:</span>
+        <div className="herd-flock-scope" role="group" aria-label="양 떼 크기 선택">
+          <span className="herd-scope-label">양 떼 크기:</span>
           {FLOCK_SIZES.map((size) => (
-            <button key={size} type="button" aria-label={`${size} sheep`}
+            <button key={size} type="button" aria-label={`양 ${size}마리`}
               className={`herd-scope-btn ${flockSize === size ? 'herd-scope-btn--active' : ''}`}
               onClick={() => setFlockSize(size)}>{size}</button>
           ))}
@@ -184,10 +184,10 @@ export function SheepRegistryTab() {
           <input
             type="search"
             className="herd-search-field"
-            placeholder="Search name, breed, or #..."
+            placeholder="이름, 품종 또는 번호 검색..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            aria-label="Filter sheep by text"
+            aria-label="텍스트로 양 필터"
           />
           <select
             className="herd-breed-dropdown"
@@ -195,11 +195,11 @@ export function SheepRegistryTab() {
             onChange={(e) =>
               setFilterBreed(e.target.value as 'all' | SheepBreedId | 'custom')
             }
-            aria-label="Filter by breed"
+            aria-label="품종으로 필터"
           >
-            <option value="all">All breeds ({flockSize})</option>
+            <option value="all">모든 품종 ({flockSize})</option>
             {customCount > 0 ? (
-              <option value="custom">Named only ({customCount})</option>
+              <option value="custom">이름 지은 양만 ({customCount})</option>
             ) : null}
             {BREED_IDS.map((id) =>
               breedCounts[id] > 0 ? (
@@ -213,7 +213,7 @@ export function SheepRegistryTab() {
 
         {/* Batch Pages for 75/200 sizes */}
         {batchPages.length > 0 && filterBreed === 'all' && !searchQuery ? (
-          <div className="herd-batch-pages" role="navigation" aria-label="Sheep batches">
+          <div className="herd-batch-pages" role="navigation" aria-label="양 묶음">
             {batchPages.map((page) => {
               const isActive =
                 selectedSheep >= page.startIndex &&
@@ -236,8 +236,8 @@ export function SheepRegistryTab() {
         <div className="herd-registry-status">
           <span className="herd-status-count">
             {filteredIndices.length === flockSize
-              ? `${flockSize} sheep`
-              : `${filteredIndices.length} of ${flockSize} sheep`}
+              ? `양 ${flockSize}마리`
+              : `양 ${flockSize}마리 중 ${filteredIndices.length}마리`}
           </span>
           <div className="herd-status-actions">
             {customCount < flockSize ? (
@@ -245,9 +245,9 @@ export function SheepRegistryTab() {
                 type="button"
                 className="herd-link-btn"
                 onClick={handleBatchRandomizeRemaining}
-                title="Fill all remaining unnamed sheep with names from the ledger"
+                title="이름 없는 나머지 양을 명부의 이름으로 채웁니다"
               >
-                Name remaining
+                나머지 이름 짓기
               </button>
             ) : null}
             {customCount > 0 ? (
@@ -255,18 +255,18 @@ export function SheepRegistryTab() {
                 type="button"
                 className="herd-link-btn herd-link-btn--reset"
                 onClick={resetSheepNames}
-                title="Reset all custom names"
+                title="모든 사용자 지정 이름 초기화"
               >
-                Reset names
+                이름 초기화
               </button>
             ) : null}
           </div>
         </div>
 
         {/* Sized Sheep Grid */}
-        <div className="herd-sheep-grid" role="listbox" aria-label="Filtered flock sheep list">
+        <div className="herd-sheep-grid" role="listbox" aria-label="필터된 양 목록">
           {filteredIndices.length === 0 ? (
-            <p className="herd-empty-hint">No sheep match current filter</p>
+            <p className="herd-empty-hint">현재 필터와 맞는 양이 없습니다</p>
           ) : (
             filteredIndices.map((i) => {
               const breed = SHEEP_BREEDS[getSheepBreed(i, flockVarietyMode)];
