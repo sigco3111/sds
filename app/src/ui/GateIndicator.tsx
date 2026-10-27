@@ -47,7 +47,7 @@ export function GateIndicator() {
     update();
     return useGameStore.subscribe(update);
   }, []);
-  return <div ref={anchor} className="herd-gate-cue" hidden aria-label="Direction to gate">
+  return <div ref={anchor} className="herd-gate-cue" hidden aria-label="울타리 문 방향">
     <svg viewBox="0 0 44 44" aria-hidden="true" focusable="false">
       <circle className="herd-gate-cue__dial" cx="22" cy="22" r={DIAL} />
       <path className="herd-gate-cue__marks" d={MARKS} />
