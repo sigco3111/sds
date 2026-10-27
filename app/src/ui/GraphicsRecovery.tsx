@@ -12,10 +12,10 @@ export function GraphicsRecovery() {
         if (event.key === 'Tab') { event.preventDefault(); reload.current?.focus(); }
       }}>
       <section className="herd-panel">
-      <h1 id="graphics-lost-title" className="herd-panel__title">Graphics stopped</h1>
-      <p id="graphics-lost-detail">The current run cannot continue. Reload to return to the title screen.</p>
+      <h1 id="graphics-lost-title" className="herd-panel__title">그래픽이 멈췄습니다</h1>
+      <p id="graphics-lost-detail">현재 플레이를 계속할 수 없습니다. 다시 불러오면 타이틀 화면으로 돌아갑니다.</p>
       <button ref={reload} type="button" className="herd-button herd-button--primary"
-        onClick={() => window.location.reload()}>Reload game</button>
+        onClick={() => window.location.reload()}>게임 다시 불러오기</button>
       </section>
     </div>
   );
