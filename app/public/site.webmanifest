@@ -1,14 +1,14 @@
 {
   "name": "Sheepdog Sim",
   "short_name": "Sheepdog Sim",
-  "description": "Guide every sheep through the gate.",
-  "start_url": "/",
+  "description": "모든 양을 울타리 안으로 몰아 넣으세요.",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#eadfca",
   "theme_color": "#405b3e",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "./favicon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
