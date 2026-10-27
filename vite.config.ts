@@ -53,6 +53,7 @@ const releaseManifest: Plugin = {
 };
 
 export default defineConfig({
+  base: '/sds/',
   root,
   publicDir: fileURLToPath(new URL('./app/public', import.meta.url)),
   plugins: [
