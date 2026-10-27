@@ -25,7 +25,7 @@ export function getDefaultSheepName(index: number): string {
   if (index >= 0 && index < sheepNames.length) {
     return sheepNames[index]!;
   }
-  return `Sheep #${index + 1}`;
+  return `양 #${index + 1}`;
 }
 
 export const SHEEP_NAMES_LEDGER: readonly string[] = sheepNames;
