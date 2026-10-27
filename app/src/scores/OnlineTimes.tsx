@@ -11,7 +11,7 @@ export function OnlineTimes() {
 
   if (status === 'idle') return null;
   return (
-    <section className="herd-online-times" aria-label="Online times" aria-live="polite">
+    <section className="herd-online-times" aria-label="온라인 기록" aria-live="polite">
       <p>{message}</p>
       {status === 'ready' && entries.length > 0 ? (
         <ol>
