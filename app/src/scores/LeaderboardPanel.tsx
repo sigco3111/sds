@@ -74,20 +74,20 @@ export function LeaderboardPanel({
       <section ref={panel} className="herd-panel herd-board-panel">
         <header className="herd-panel__header">
           <div>
-            <p className="herd-panel__kicker">Fastest complete runs</p>
-            <h2 id="times-title" className="herd-panel__title">Solo times</h2>
+            <p className="herd-panel__kicker">가장 빠른 완주 기록</p>
+            <h2 id="times-title" className="herd-panel__title">솔로 기록</h2>
           </div>
           <button
             type="button"
             className="herd-icon-button"
-            aria-label="Close solo times"
+            aria-label="솔로 기록 닫기"
             autoFocus
             onClick={onClose}
           >
-            Close
+            닫기
           </button>
         </header>
-        <div className="herd-board-tabs" aria-label="Flock size">
+        <div className="herd-board-tabs" aria-label="양 떼 크기">
           {FLOCK_SIZES.map((size) => (
             <button
               key={size}
@@ -105,12 +105,12 @@ export function LeaderboardPanel({
             aria-pressed={tab === 'mine'}
             onClick={() => setTab('mine')}
           >
-            My times
+            내 기록
           </button>
         </div>
         {tab === 'mine' ? (
           <>
-            <p className="herd-board-caption">Every run you have finished, by flock size.</p>
+            <p className="herd-board-caption">완주한 모든 기록을 양 떼 크기별로 보여줍니다.</p>
             {runsStatus !== 'ready' || runs.length === 0 ? (
               <p className="herd-board-message" role="status">{runsMessage}</p>
             ) : (
@@ -119,14 +119,14 @@ export function LeaderboardPanel({
           </>
         ) : (
           <>
-            <div className="herd-board-tabs" aria-label="Board">
+            <div className="herd-board-tabs" aria-label="순위표">
               <button
                 type="button"
                 className="herd-size"
                 aria-pressed={weekToken === null}
                 onClick={() => setWeekToken(null)}
               >
-                All-time
+                전체 기간
               </button>
               <button
                 type="button"
@@ -134,20 +134,20 @@ export function LeaderboardPanel({
                 aria-pressed={weekToken !== null}
                 onClick={() => setWeekToken('current')}
               >
-                This week
+                이번 주
               </button>
             </div>
             <p className="herd-board-caption">
               {weekToken === null
-                ? `Fastest runs with ${flockSize} sheep.`
+                ? `양 ${flockSize}마리 최고 기록.`
                 : weekToken === 'current'
-                  ? `This week, with ${flockSize} sheep.`
-                  : `${boardWeekLabel || 'That week'}, with ${flockSize} sheep.`}
+                  ? `이번 주, 양 ${flockSize}마리.`
+                  : `${boardWeekLabel || '해당 주'}, 양 ${flockSize}마리.`}
             </p>
             {status === 'loading' || status === 'offline' || entries.length === 0 ? (
               <p className="herd-board-message" role="status">{message}</p>
             ) : (
-              <ol className="herd-board-list" aria-label={`${flockSize}-sheep solo times`}>
+              <ol className="herd-board-list" aria-label={`양 ${flockSize}마리 솔로 기록`}>
                 {entries.slice(0, 10).map((entry) => (
                   <li key={entry.persistentId}>
                     <span><span className="herd-board-rank">{entry.rank}.</span> {entry.displayName}</span>
@@ -165,7 +165,7 @@ export function LeaderboardPanel({
                   if (previous) setWeekToken(previous);
                 }}
               >
-                Previous week
+                지난주
               </button>
             ) : null}
           </>
