@@ -3,8 +3,8 @@ import { useTouchPresent } from '@app/input/touchPresent';
 import { useGameStore } from '@app/state/store';
 
 function keyLabel(code: string): string {
-  if (code === 'ShiftLeft') return 'Left Shift';
-  if (code === 'ShiftRight') return 'Right Shift';
+  if (code === 'ShiftLeft') return '왼쪽 Shift';
+  if (code === 'ShiftRight') return '오른쪽 Shift';
   return code.replace(/^(Key|Digit)/, '');
 }
 
@@ -20,14 +20,14 @@ export function DesktopControls() {
     .map(keyLabel).join(' ');
   if (touch) return null;
   return (
-    <div className="herd-desktop-controls" role="group" aria-label="Keyboard controls">
-      <span><kbd>{movement}</kbd> Move</span>
-      <span><kbd>{keyLabel(bindings.bark)}</kbd> Bark</span>
-      <span><kbd>{keyLabel(bindings.sprint)}</kbd> Sprint</span>
-      <span><kbd>{keyLabel(bindings.walk)}</kbd> Hold to walk</span>
-      <span><kbd>{keyLabel(bindings.camera)}</kbd> Camera</span>
-      <span><kbd>{keyLabel(bindings.timer)}</kbd> Timer</span>
-      <span><kbd>Esc</kbd> Pause</span>
+    <div className="herd-desktop-controls" role="group" aria-label="키보드 조작">
+      <span><kbd>{movement}</kbd> 이동</span>
+      <span><kbd>{keyLabel(bindings.bark)}</kbd> 짖기</span>
+      <span><kbd>{keyLabel(bindings.sprint)}</kbd> 전력질주</span>
+      <span><kbd>{keyLabel(bindings.walk)}</kbd> 누르는 동안 걷기</span>
+      <span><kbd>{keyLabel(bindings.camera)}</kbd> 카메라</span>
+      <span><kbd>{keyLabel(bindings.timer)}</kbd> 타이머</span>
+      <span><kbd>Esc</kbd> 일시정지</span>
     </div>
   );
 }
