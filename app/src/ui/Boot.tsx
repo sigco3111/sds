@@ -29,7 +29,7 @@ export function Boot() {
   const playPath = flockSizeFromPath(window.location.pathname);
   const startedFromPath = useRef(false);
   const percent = sceneReady ? 100 : bootPercent(bootProgress);
-  const status = sceneReady ? 'Field ready' : bootStatus(bootProgress);
+  const status = sceneReady ? '들판 준비 완료' : bootStatus(bootProgress);
 
   const closeTimes = () => {
     setShowTimes(false);
@@ -75,12 +75,12 @@ export function Boot() {
         <section className="herd-loading-card" role="status" aria-live="polite">
           <div className="herd-loading-card__lockup">
             <h1>Sheepdog Sim</h1>
-            <p>Preparing one field</p>
+            <p>들판을 준비하고 있습니다</p>
           </div>
           <div
             className="herd-loading-track"
             role="progressbar"
-            aria-label="Loading the game"
+            aria-label="게임 불러오는 중"
             aria-valuemin={0}
             aria-valuemax={100}
             aria-valuenow={percent}
@@ -96,10 +96,10 @@ export function Boot() {
       <main className="herd-title-card" inert={!sceneReady || showTimes ? true : undefined}>
         <div className="herd-title-lockup">
           <h1 className="herd-title">Sheepdog Sim</h1>
-          <p className="herd-kicker">every sheep through the gate</p>
+          <p className="herd-kicker">모든 양을 울타리 안으로</p>
         </div>
         <PlayerIdentity />
-        <div className="herd-size-row" aria-label="Flock size">
+        <div className="herd-size-row" aria-label="양 떼 크기">
           {FLOCK_SIZES.map((size) => (
             <button
               key={size}
@@ -119,7 +119,7 @@ export function Boot() {
             disabled={!sceneReady || leaving}
             onClick={play}
           >
-            Play
+            플레이
           </button>
           <button
             type="button"
@@ -129,14 +129,14 @@ export function Boot() {
             aria-controls="customization-studio"
             onClick={openCustomize}
           >
-            Customize
+            꾸미기
           </button>
           <button
             type="button"
             className="herd-button herd-button--quiet"
             onClick={openSettings}
           >
-            Settings
+            설정
           </button>
           <button
             ref={timesButton}
@@ -144,12 +144,12 @@ export function Boot() {
             className="herd-button herd-button--quiet"
             onClick={() => setShowTimes(true)}
           >
-            Times
+            기록
           </button>
         </div>
-        <nav className="herd-title-links" aria-label="Game information">
-          <a href="/about">About the game</a>
-          <a href="/support">Controls and help</a>
+        <nav className="herd-title-links" aria-label="게임 정보">
+          <a href={`${import.meta.env.BASE_URL}about`}>게임 소개</a>
+          <a href={`${import.meta.env.BASE_URL}support`}>조작법과 도움말</a>
         </nav>
       </main>
       {showTimes ? (
