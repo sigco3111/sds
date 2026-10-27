@@ -44,15 +44,15 @@ const BOOT_WEIGHTS: Readonly<Record<BootStep, number>> = Object.freeze({
 });
 
 const LABELS: Readonly<Record<BootStep, string>> = Object.freeze({
-  renderer: 'Starting graphics',
-  terrain: 'Shaping the field',
-  grass: 'Loading grass',
-  treeline: 'Planting the treeline',
-  scatter: 'Dressing the meadow',
-  capability: 'Checking graphics',
-  scene: 'Building the field',
-  shaders: 'Preparing cel shading',
-  presented: 'Drawing the first frame',
+  renderer: '그래픽 시작 중',
+  terrain: '들판 다듬는 중',
+  grass: '풀밭 불러오는 중',
+  treeline: '나무 심는 중',
+  scatter: '초원 꾸미는 중',
+  capability: '그래픽 확인 중',
+  scene: '들판 만드는 중',
+  shaders: '셀 셰이딩 준비 중',
+  presented: '첫 화면 그리는 중',
 });
 
 const ASSET_STEPS: readonly BootStep[] = ['terrain', 'grass', 'treeline', 'scatter'];
