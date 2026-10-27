@@ -11,7 +11,7 @@ export const AUDIO_ASSETS: readonly AudioAssetDefinition[] = [
     byteSize: 385053,
     sha256: '110e9b1537a506c7a8497bfe8f66d8b44906dde12c04001947431027d8e65973',
     durationSeconds: 20.332358,
-    url: new URL('../../../assets/audio/licensed/birds-loop.flac', import.meta.url).href,
+    url: new URL('../../../assets/audio/synth/birds-loop.flac', import.meta.url).href,
   },
   {
     id: 'pant-loop',
@@ -20,7 +20,7 @@ export const AUDIO_ASSETS: readonly AudioAssetDefinition[] = [
     byteSize: 1527871,
     sha256: '7ab8dd83fcbba37d5154035644c0d4e5768d4698af0d64082be5b478a147ede7',
     durationSeconds: 9.796009,
-    url: new URL('../../../assets/audio/licensed/pant-loop.flac', import.meta.url).href,
+    url: new URL('../../../assets/audio/synth/pant-loop.flac', import.meta.url).href,
   },
   {
     id: 'baa-01',
