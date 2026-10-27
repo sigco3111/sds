@@ -28,8 +28,8 @@ export function MyTimes({ runs }: { readonly runs: readonly PlayerRun[] }) {
   return (
     <div className="herd-mine">
       <p className="herd-mine__summary">
-        <span><b>{runs.length}</b> finished {runs.length === 1 ? 'run' : 'runs'}</span>
-        <span><b>{sizesRun}</b> of {groups.length} flock sizes</span>
+        <span>완주 <b>{runs.length}</b>회</span>
+        <span>양 떼 크기 {groups.length}개 중 <b>{sizesRun}</b>개</span>
       </p>
       {groups.map((group) => (
         <Group
@@ -66,23 +66,23 @@ function Group({ group, expanded, onToggle }: {
   return (
     <section className="herd-mine-group">
       <header className="herd-mine-group__head">
-        <h3 className="herd-mine-group__size">{flockSize} sheep</h3>
+        <h3 className="herd-mine-group__size">양 {flockSize}마리</h3>
         <p className="herd-mine-group__count">
-          {runs.length === 0 ? 'No runs yet' : `${runs.length} ${runs.length === 1 ? 'run' : 'runs'}`}
-          {boardPlayers === null ? '' : ` · ${boardPlayers} on the board`}
+          {runs.length === 0 ? '아직 기록 없음' : `${runs.length}회`}
+          {boardPlayers === null ? '' : ` · 순위표 ${boardPlayers}명`}
         </p>
       </header>
       {best === undefined ? (
-        <p className="herd-mine-empty">Finish a run at this size and it lands here.</p>
+        <p className="herd-mine-empty">이 크기로 완주하면 여기에 기록됩니다.</p>
       ) : (
         <>
           <p className="herd-mine-best">
-            <span className="herd-mine-best__label">Your best</span>
+            <span className="herd-mine-best__label">내 최고 기록</span>
             <span className="herd-mine-best__time">
               {formatRunTime(best.run.scoreSeconds * 1000)}
               {best.run.boardRank === undefined || best.run.boardPlayers === undefined ? null : (
                 <span className="herd-mine-best__standing">
-                  {formatOrdinal(best.run.boardRank)} of {best.run.boardPlayers} players
+                  {best.run.boardPlayers}명 중 {formatOrdinal(best.run.boardRank)}
                 </span>
               )}
             </span>
@@ -90,7 +90,7 @@ function Group({ group, expanded, onToggle }: {
           <ol
             id={listId}
             className={`herd-mine-runs${bars ? '' : ' herd-mine-runs--single'}`}
-            aria-label={`Your ${flockSize}-sheep runs, fastest first`}
+            aria-label={`양 ${flockSize}마리 기록, 빠른 순`}
           >
             {shown.map(({ run, position, deltaSeconds, fill }) => (
               <li key={`${run.submittedAt}-${run.scoreSeconds}`} data-best={position === 1}>
@@ -100,7 +100,7 @@ function Group({ group, expanded, onToggle }: {
                 </span>
                 <span className="herd-run__time">{formatRunTime(run.scoreSeconds * 1000)}</span>
                 <span className="herd-run__meta" data-best={position === 1}>
-                  <b>{position === 1 ? 'Best' : formatDelta(deltaSeconds)}</b>
+                  <b>{position === 1 ? '최고' : formatDelta(deltaSeconds)}</b>
                   {run.boardRank === undefined ? null : <em>{formatOrdinal(run.boardRank)}</em>}
                 </span>
                 <span className="herd-run__share-slot">
@@ -131,8 +131,8 @@ function Group({ group, expanded, onToggle }: {
               onClick={onToggle}
             >
               {expanded
-                ? 'Show fewer'
-                : `Show all ${runs.length} runs`}
+                ? '접기'
+                : `${runs.length}개 기록 모두 보기`}
             </button>
           ) : null}
         </>
