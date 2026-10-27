@@ -48,18 +48,18 @@ export function SheepInspectorCard({
             type="button"
             className="herd-stepper-btn"
             onClick={onPrevSheep}
-            title="Inspect previous sheep"
-            aria-label="Previous sheep"
+            title="이전 양 살펴보기"
+            aria-label="이전 양"
           >
             ‹
           </button>
-          <span className="herd-sheep-num">Sheep #{selectedSheep + 1}</span>
+          <span className="herd-sheep-num">양 #{selectedSheep + 1}</span>
           <button
             type="button"
             className="herd-stepper-btn"
             onClick={onNextSheep}
-            title="Inspect next sheep"
-            aria-label="Next sheep"
+            title="다음 양 살펴보기"
+            aria-label="다음 양"
           >
             ›
           </button>
@@ -80,27 +80,27 @@ export function SheepInspectorCard({
           className="herd-rename-input"
           maxLength={24}
           value={currentName}
-          placeholder="Name this sheep..."
-          aria-label={`Name for sheep #${selectedSheep + 1}`}
+          placeholder="이 양의 이름을 지어주세요..."
+          aria-label={`양 #${selectedSheep + 1}의 이름`}
           onChange={(e) => setSheepName(selectedSheep, e.target.value)}
           onKeyDown={handleKeyDown}
         />
         <button
           type="button"
           className="herd-action-btn"
-          title="Pick a random pastoral name"
+          title="목가적인 이름 무작위로 뽑기"
           onClick={() => setSheepName(selectedSheep, getRandomSheepName())}
         >
-          Roll
+          뽑기
         </button>
         {isCustomized ? (
           <button
             type="button"
             className="herd-action-btn herd-action-btn--reset"
-            title="Reset to default name"
+            title="기본 이름으로 되돌리기"
             onClick={() => setSheepName(selectedSheep, '')}
           >
-            Reset
+            되돌리기
           </button>
         ) : null}
       </div>
