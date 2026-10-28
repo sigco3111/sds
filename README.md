@@ -1,186 +1,125 @@
-# Sheepdog Sim
+# Sheepdog Sim (양몰이 심) — 한국어판
 
-One dog, one flock, one field. A calm, cel-shaded browser game about guiding
-sheep through a pasture gate. Get behind the flock, move patiently and use a
-well-timed bark to bring stragglers home.
+한 마리의 개, 한 떼의 양, 한 평원. 잔잔한 셀 셰이딩 브라우저 게임으로,
+양들을 이끌어 울타리 안으로 몰아넣는 게임입니다. 양떼 뒤에서 천천히 접근하고,
+적절한 타이밍의 짖기로 흩어진 양들을 집으로 데려오세요.
 
-**[Play Sheepdog Sim](https://sheepdogsim.com)** ·
-[Controls and help](https://sheepdogsim.com/support) ·
-[Report a bug](https://github.com/matthew-kissinger/sds/issues)
+**[지금 플레이하기 (GitHub Pages)](https://sigco3111.github.io/sds/)** ·
+[원본 저장소 (matthew-kissinger/sds)](https://github.com/matthew-kissinger/sds)
 
-![Sheepdog Sim field and title](app/public/og/sheepdog-sim-v2.png)
+![타이틀 화면](docs/screenshots/sds-title.jpg)
+![게임 플레이](docs/screenshots/sds-gameplay.jpg)
 
-## In the field
+> 이 저장소는 원작자의 허가 조건(AGPL-3.0)을 지키며 한국어화한 포크입니다.
+> 원본 README는 [README.en.md](README.en.md)에 그대로 보존되어 있습니다.
 
-- Choose a flock of **25, 75 or 200 sheep** and guide every sheep into the pen.
-- Move, sprint and bark with keyboard, gamepad or touch controls.
-- Switch between the overhead **Classic** camera and the closer **Follow** view.
-- Find the entrance through an in-world highlight and an offscreen direction cue.
-- Personalize your dog’s coat and name, choose flock breeds and name individual
-  sheep in **Studio**. Compact phone controls leave room for the animal preview;
-  larger screens use a side panel.
-- Explore a golden-hour field with dense grass, authored trees, moving clouds,
-  an animated farmhand and a quieter, spatial soundscape.
-- Keep local personal bests and optionally compare online solo times for each
-  flock size. Edit the running name assigned to your device.
+## 목차
 
-Online identity and score requests are fail-soft. Play, completion and local
-personal bests continue when the score service is unavailable.
+- [게임 소개](#게임-소개)
+- [플레이 방법](#플레이-방법)
+- [한국어화 내용](#한국어화-내용)
+- [솔로 전용 안내](#솔로-전용-안내)
+- [오디오 교체와 라이선스](#오디오-교체와-라이선스)
+- [기술 스택](#기술-스택)
+- [로컬 빌드 방법](#로컬-빌드-방법)
+- [배포 재현 방법](#배포-재현-방법)
+- [라이선스](#라이선스)
 
-No account is required to play. Solo, co-op and shared-flock competitive are
-available; multiplayer supports two to four players through invite links and
-regional public lobbies. Campaign and survival modes are not included.
-See [multiplayer development](realtime/README.md) for local play and the
-persistent history/owner-dashboard candidate.
+## 게임 소개
 
-## Controls
+- **25마리, 75마리, 200마리** 중 양떼 크기를 고르고 모든 양을 우리에 넣으면 완료입니다.
+- 키보드·게임패드·터치로 이동, 전력질주, 짖기를 사용합니다.
+- 위에서 내려다보는 **클래식** 카메라와 가까이 따라가는 **추적** 시점을 전환할 수 있습니다.
+- 월드 내 하이라이트와 화면 밖 방향 표시로 울타리 입구를 안내합니다.
+- **꾸미기**에서 개의 털색과 이름, 양 품종을 고르고 양 한 마리 한 마리에 이름을 지어줄 수 있습니다.
+- 황금빛 들판, 빽빽한 풀숲, 배치된 나무들, 움직이는 구름, 공간감 있는 사운드를 즐길 수 있습니다.
+- 기기에 로컬 최고 기록을 저장합니다.
 
-| Action | Keyboard | Gamepad | Touch |
+## 플레이 방법
+
+1. [https://sigco3111.github.io/sds/](https://sigco3111.github.io/sds/)에 접속합니다.
+2. 양떼 크기(25/75/200)를 선택하고 **플레이**를 누릅니다.
+3. 조작법:
+
+| 동작 | 키보드 | 게임패드 | 터치 |
 | --- | --- | --- | --- |
-| Move | W A S D or arrows | Left stick | Left joystick |
-| Sprint | Shift | Right trigger or A / Cross | Sprint button |
-| Bark | Space | B / Circle or X / Square | Bark button |
-| Change camera | C | Y / Triangle | Camera button |
-| Pause | Escape or pause button | Use the on-screen pause button | Pause button |
+| 이동 | W A S D 또는 방향키 | 왼쪽 스틱 | 왼쪽 조이스틱 |
+| 짖기 | Space | 남쪽 버튼 | 짖기 버튼 |
+| 전력질주 | 왼쪽 Shift | 오른쪽 트리거 | 질주 버튼 |
+| 걷기 | V (누르는 동안) | — | — |
+| 카메라 전환 | C | — | — |
+| 타이머 표시 | T | — | — |
+| 일시정지 | Esc | 시작 버튼 | 일시정지 버튼 |
 
-After stamina runs out, release Sprint and press again to start another sprint.
-Holding it down through recovery does not automatically restart it. Partial
-stick movement provides a slower walking pace.
+## 한국어화 내용
 
-Settings includes keyboard remapping, reduced motion, quality, audio levels and
-a colorblind dog marker. In Studio, drag the preview or use the orbit controls;
-choose a camera preset to inspect the dog from another angle.
+- 게임 내 모든 UI: 부팅 화면, HUD, 설정, 꾸미기, 양 등록부, 개별 양 정보, 조작 안내, 그래픽 복구 안내, 터치 컨트롤
+- 점수·기록 화면과 공유 문구, 순위 표기("N위")
+- 한국어 양 이름 220개, 개 이름 20개, 개 털색 6종, 양 품종 9종과 변종 옵션
+- 소개·지원·개인정보·404 정적 페이지와 웹 앱 매니페스트
+- 한국어 본문용 Noto Serif KR 서브셋 폰트 추가(실제 사용 글자만 추려 176KB로 경량화)
 
-## Run locally
+## 솔로 전용 안내
 
-Requirements:
+이 배포는 **정적 호스팅 전용 솔로 빌드**입니다. 원작의 온라인 기능(온라인 기록 비교,
+멀티플레이 로비/초대, 소유자 대시보드)은 서버(Cloudflare Workers + D1)가 필요하여
+이 정적 배포에서는 동작하지 않습니다. 게임 플레이와 로컬 최고 기록 저장은 정상 동작하며,
+화면에 "온라인 기록 사용 불가"가 표시되는 것은 의도된 동작입니다.
 
-- Node.js 22 or newer;
-- a current browser with WebGPU or WebGL2.
+## 오디오 교체와 라이선스
+
+원본 저장소의 오디오 14개 파일(Mixkit 2개, ElevenLabs 12개)에는 공개 재배포를 허용하는
+라이선스 기록이 없어, 원본의 자산 정책(LICENSE-ASSETS: "재배포 라이선스가 기록되지 않은
+자산은 공개 릴리스에 포함할 수 없다")에 따라 **전부 FFmpeg로 합성한 동일 역할의
+사운드로 교체**했습니다. 파일명과 용도는 원래대로 유지되며, 상세한 대응표와 합성 방법은
+[assets/audio/README.md](assets/audio/README.md)에 기록되어 있습니다.
+
+## 기술 스택
+
+- **렌더링**: Three.js (WebGPURenderer, WebGPU 불가 환경에서는 WebGL2 백엔드로 자동 전환), 셀 셰이딩, GPU 인스턴싱 풀·지형
+- **UI**: React 19 + Vite(rolldown)
+- **원본 인프라**: Cloudflare Workers + D1 (점수 API) — 이 배포에서는 미사용
+- **폰트**: Noto Serif KR (Google Fonts, OFL) 서브셋, Piazzolla (원본 포함)
+
+## 로컬 빌드 방법
+
+요구 사항: Node.js 22+
 
 ```bash
-git clone https://github.com/matthew-kissinger/sds.git
+git clone https://github.com/sigco3111/sds.git
 cd sds
 npm ci
-npm run dev
+npm run build:preview   # 솔로 전용 정적 프리뷰 빌드
 ```
 
-Open the local URL printed by Vite.
+빌드 결과물(정적 사이트)은 `app/.cloudflare/output/v0/workers/default/assets/`에 생성됩니다.
+이 디렉터리를 그대로 정적 호스팅에 올리면 됩니다. 개발 서버는 `npm run dev`입니다.
 
-`npm run dev` also runs the score API: the Cloudflare Vite plugin serves the
-Worker from `app/cloudflare.config.ts` beside the client on the same origin,
-with no proxy and a local D1 under `.wrangler/state`. The API needs a local secret and
-database once:
+참고: `vite.config.ts`의 `base`가 `/sds/`로 설정되어 있어 다른 경로에 배포하려면 이 값을
+바꾸고 다시 빌드해야 합니다.
 
-```bash
-cp .dev.vars.example .dev.vars         # local JWT_SECRET, gitignored
-node scripts/d1-local-setup.mjs        # once, for a fresh local database
-```
+## 배포 재현 방법
 
-Without them the game runs and the online boards report unavailable.
+이 포크의 `gh-pages` 브랜치가 위 빌드 결과물을 담고 있으며, GitHub Pages가
+`gh-pages / (root)`를 서비스합니다(루트의 `.nojekyll`로 Jekyll 처리는 꺼져 있습니다).
 
-[docs/operations/deployment.md](docs/operations/deployment.md) has the local
-workflow in full.
+이 환경의 GitHub 웹 UI 제약으로 인해 배포물에 아래와 같은 이력이 있습니다(재현 시 참고):
 
-Useful commands:
+1. 웹 업로드는 모든 파일에 연번 접두사(예: `47-`)를 붙여 커밋합니다. 작은 파일은
+   업로드 후 파일명을 원래대로 변경했습니다.
+2. 1MB를 넘는 파일은 웹 편집기에서 이름을 바꾸면 내용이 비워지는 문제가 있어,
+   아래 3개 파일은 접두사가 붙은 이름 그대로 두고 참조를 그 이름에 맞췄습니다.
+   - `assets/1-index-BpyLagfH.js` (메인 번들; `index.html`의 `<script src>`가 이 이름을 가리킴)
+   - `assets/48-tufts-Dk2H0yBJ.bin` (풀 데이터; 번들 내부 참조가 이 이름으로 패치됨)
+   - `assets/53-sheepdog-sim-v2.png` (OG 이미지; 메타 태그 참조)
+3. 폰트 2개는 `assets/` 아래에 두고 `index.html`의 `@font-face`/preload가 그 경로를 가리킵니다.
+4. 솔로 빌드에서 실행되지 않는 지연 청크 2개(소유자 대시보드, 기록 보기)는 배포물에서 제외했습니다.
 
-```bash
-npm test
-npm run lint
-npm run typecheck
-npm run typecheck:worker
-npm run build
-npm run preview
-npm run probe:boot
-npm run probe:release
-npm run check:discovery
-```
+빌드 결과물을 새로 배포할 때는 위 1~3의 이름 대응만 동일하게 적용하면 됩니다.
 
-Run `npm run build` before the preview and built-artifact checks. See
-[the testing guide](spec/09-testing.md) for validation expectations.
-Current evidence and remaining device
-or performance limitations are tracked in [STATUS.md](STATUS.md).
+## 라이선스
 
-## Architecture
-
-The application is split into four deliberate boundaries:
-
-```text
-sim/       deterministic fixed-step herding simulation
-app/       React Three Fiber, Three.js, input, audio and player interface
-assets/    runtime assets plus editable sources and bake manifests
-tools/     deterministic bakes, diagnostics and release verification
-worker/    identity and score API; also serves the built client as static assets
-```
-
-The simulation imports no Three.js, React, DOM or network code. The renderer
-uses one TSL material path for WebGPU and WebGL2. Zustand is the shared state
-authority for the scene and player interface.
-
-The field is assembled from reproducible source:
-
-- terrain, grass, treeline and scatter placement are deterministic bakes;
-- the active treeline is an original, procedurally authored sculpted-oak family,
-  baked into instanced geometry with no external model loading;
-- sheep, the skinned dog and farmer, fences and farm structures are code-authored;
-- material and atmosphere systems are TSL source;
-- every audio file is a committed, provenance-tracked source with its provider,
-  prompt, processing, duration, size and digest recorded in the audio ledger;
-- authoring concepts are retained separately from runtime assets.
-
-Read [the version 3 architecture reset](docs/architecture/v3-reset.md) for what
-was retained from version 2, what was removed and why the codebase was rebuilt.
-Asset-specific recipes and provenance are documented under [assets/](assets/),
-including [trees](assets/treeline/README.md), [dog](assets/dog/README.md),
-[farmer](assets/farmer/README.md) and [audio](assets/audio/README.md).
-
-## Release discipline
-
-Production deploys use the [Deploy workflow](.github/workflows/deploy.yml),
-triggered by a release tag on a commit already on `main`, and the procedure is
-[docs/operations/deployment.md](docs/operations/deployment.md). One Cloudflare
-Worker serves the game and its score API on `sheepdogsim.com`, so one deploy
-ships both from the same commit. The workflow installs dependencies, runs lint,
-typechecks, tests and the build, archives the artifact, deploys, then verifies
-the live release, the API and the discovery pages.
-
-Contributor checks additionally cover:
-
-- deterministic fixtures and a running production preview;
-- a built-artifact scan that checks the declared production multiplayer
-  surface and excludes deferred scale and development-only code;
-- complete 25, 75 and 200 sheep runs on both renderer backends;
-- desktop and mobile interaction, layout and audio checks;
-- asset source, license, secret and local-artifact checks;
-- release and rollback procedures for the static client.
-
-The deployed [release manifest](https://sheepdogsim.com/release.json) records
-the source commit and artifact identity. Device coverage and performance numbers
-in [STATUS.md](STATUS.md) describe measured configurations, not a guarantee for
-every phone or PC. Production publication requires owner approval.
-
-Production serves the multiplayer client with a separate realtime Worker at
-`/r/*`. Solo-time boards keep the existing `field-v3` partition; multiplayer
-history uses a separate database. The 5,000-sheep experiment remains excluded.
-
-## Contributing
-
-Start with [CONTRIBUTING.md](CONTRIBUTING.md), then read
-[AGENTS.md](AGENTS.md) and the relevant document under [spec/](spec/). The spec
-is the product contract. When implementation and spec disagree, document the
-decision rather than adding a compatibility branch.
-
-Bug reports should include the browser, device, renderer backend, flock size,
-seed when known, reproduction steps and console output. Security issues should
-follow [SECURITY.md](SECURITY.md).
-
-## License
-
-Source code is licensed under
-[GNU AGPL-3.0-or-later](https://www.gnu.org/licenses/agpl-3.0.html), copyright
-Matthew Kissinger.
-
-Runtime and authoring assets are covered by the asset ledger and
-`LICENSE-ASSETS`. Do not assume a code license applies to third-party or
-generated media. Hosted modified versions must provide corresponding source and
-retain the applicable notices.
+- 코드: 원본과 동일하게 **AGPL-3.0-or-later** ([LICENSE](LICENSE))
+- 자산 정책: [LICENSE-ASSETS](LICENSE-ASSETS) — 상기 사유로 오디오는 합성 대체되었습니다
+- 원작: [matthew-kissinger/sds](https://github.com/matthew-kissinger/sds) (원작자 Matthew Kissinger)
+- 한국어화 포크: 2026-10-28, 원본 ID·저작자 표기를 유지하며 UI 문자열만 한국어로 번역
